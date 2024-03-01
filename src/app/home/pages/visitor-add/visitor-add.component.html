@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <h2>Agregar visitante</h2>
+  <form [formGroup]="addVisitorForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nombre"
+        placeholder="Ingrese su nombre"
+        formControlName="nombre"
+      />
+      <span
+        *ngIf="
+          addVisitorForm.get('nombre')!.invalid &&
+          addVisitorForm.get('nombre')!.touched
+        "
+        class="text-danger"
+      >
+        El nombre es requerido.
+      </span>
+    </div>
+    <div class="mb-3">
+      <label for="razo_v" class="form-label">Razón de visita:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="razon_v"
+        placeholder="Ingrese la razón de su visita"
+        formControlName="razon_v"
+      />
+      <span
+        *ngIf="
+          addVisitorForm.get('razon_v')!.invalid &&
+          addVisitorForm.get('razon_v')!.touched
+        "
+        class="text-danger"
+      >
+        La razón de la visita es requerida.
+      </span>
+    </div>
+    <div class="mb-3">
+      <label for="h_pico" class="form-label"> Hora pico:</label>
+      <input
+        type="datetime-local"
+        class="form-control"
+        id="h_pico"
+        placeholder="Ingrese la hora pico"
+        formControlName="h_pico"
+      />
+      <span
+        *ngIf="
+          addVisitorForm.get('h_pico')!.invalid &&
+          addVisitorForm.get('h_pico')!.touched
+        "
+        class="text-danger"
+      >
+        La hora pico es requerida.
+      </span>
+    </div>
+    <button type="submit" class="btn btn-primary">Agregar</button>
+  </form>
+</div>

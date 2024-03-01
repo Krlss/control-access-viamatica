@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div
+    class="d-flex justify-content-center align-items-center flex-column mt-5"
+  >
+    <section class="d-flex align-items-center justify-content-center">
+      <div *ngIf="!visitors.length; else divContent" class="alert alert-info">
+        No hay visitantes
+      </div>
+
+      <ng-template #divContent>
+        <table class="table table-light">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Hora Pico</th>
+              <th scope="col">Razón de ingreso</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let visitor of visitors; let i = index">
+              <td>{{ visitor.nombre }}</td>
+              <td>{{ visitor.h_pico }}</td>
+              <td>{{ visitor.razon_v }}</td>
+              <td>
+                <button class="btn btn-danger" (click)="deleteVisitor(i)">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-template>
+    </section>
+  </div>
+</div>
